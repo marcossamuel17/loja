@@ -1,0 +1,84 @@
+<html>
+
+<hmtl xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+    </head>
+
+<body>
+
+	<header>
+	 <nav>
+        <a class="logo" href="/">Tiger Codes</a>
+        <div class="mobile-menu">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+          <li><a href="/">In�cio</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="login">Login</a></li>
+          <li><a href="logout">Logout</a></li>
+          <li><a href="usuario">Cadastrar</a></li>
+          <li><a href="carrinho"><i class="material-icons">shopping_cart</i></a></li>
+          
+          <li sec:authorize="hasRole('ADMIM')"><a href="produtos">Gerenciar</a></li>
+        </ul>
+      </nav>
+	</header>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+<main>
+		
+	<div class="container-card-produto">
+			<div class="card-produto" th:each="produto : ${produtos}" >
+				<div class="row" >
+				    <div class="col s12 m7" >
+				      <div class="card">
+				        <div class="card-image">
+				          <img alt="image" th:src="@{'/exibir/{imagem}'(imagem=${produto.imagemProduto})}" width="320" height="300">
+				          <span th:text="${produto.nomeProduto}"></span>
+				        </div>
+				        <div class="card-content">
+				          <p><span th:text="${produto.descricao}"></span></p>
+				        </div>
+				        <div class="card-action">
+					        <div class="row">
+					        	<div class="col s6">
+					        	<a href="#" class="waves-effect waves-light btn"><i class="material-icons left">add_shopping_cart</i></a>
+					        	</div>
+					        	<div class="col s6">
+					        	<a th:href="@{'/adicionar/{id}'(id=${produto.prdutoID})}" class="waves-effect waves-light btn"><i class="material-icons left"></i>Comprar</a>
+					        	</div>
+					        </div>
+				        </div>
+				      </div>
+				    </div>
+				    
+			  </div>
+		  </div>
+  	</div>
+  	
+  		
+	
+ </main>
+  
+<script type="text/javascript" src="style/styleJs.js"></script> 
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>

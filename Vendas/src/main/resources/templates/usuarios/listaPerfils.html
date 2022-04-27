@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Vendas</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <link rel="stylesheet" href="style/styleCss.css"/>
+</head>
+<body>
+
+	<header>
+		<nav>
+        <a class="logo" href="/">Tiger Codes</a>
+        <div class="mobile-menu">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+          <li><a href="/">Início</a></li>
+          <li><a href="/produtos">Menu</a></li>
+          <li><a href="">Logout</a></li>
+          
+        </ul>
+      </nav>
+	</header>
+	<br>
+	<br>
+
+	<table class="container tabelaConvidado">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>E-mail</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr th:each="cliente : ${clientes}">
+					<td><span th:text="${cliente.nomeCliente}"></span></td>
+					<td><span th:text="${cliente.emailCliente}"></span></td>
+				</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+
+</html>

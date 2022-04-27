@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Vendas</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      
+      <link rel="stylesheet" href="style/styleCss.css"/>
+</head>
+<body>
+
+	<header>
+	<nav>
+        <a class="logo" href="/">Tiger Codes</a>
+        <div class="mobile-menu">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+          <li><a href="/">Início</a></li>
+          <li><a sec:authorize="hasRole('ADMIM')" href="/produtos">Cadastrar</a></li>
+          
+        </ul>
+      </nav>
+	</header>
+	<br>
+	<br>
+
+	<table class="container tabelaConvidado">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Preco</th>
+				<th>Descrição</th>
+				<th>Marca</th>
+				<th>Fornecedor</th>
+				<th>Disponiveis</th>
+				<th sec:authorize="hasRole('ADMIM')">Deletar</th>
+				<th>Comprar</th>
+			</tr>
+		</thead>
+		<tbody>
+				<tr th:each="produto : ${produtos}">
+					<td><span th:text="${produto.nomeProduto}"></span></td>
+					<td><span th:text="${produto.preco}"></span></td>
+					<td><span th:text="${produto.descricao}"></span></td>
+					<td><span th:text="${produto.marca}"></span></td>
+					<td><span th:text="${produto.fornecedor}"></span></td>
+					<td><span th:text="${produto.quantidade}"></span></td>
+					<td><span>
+						<form sec:authorize="hasRole('ADMIM')" action="#" th:action="@{'/deletarProdutos/{id}'(id=${produto.prdutoID})}" th:method="delete" >
+	  						<input type="hidden" name="_method" value="delete" />
+	  						<button class="waves-effect waves-light btn-small" type="submit" id="submitButton"><i class="material-icons left">delete</i></button>
+						</form>
+					</span></td>
+					<td><span>
+						<form action="#" th:action="@{'/{id}'(id=${produto.prdutoID})}" th:method="get" >
+	  						<button class="waves-effect waves-light btn-small" type="submit" id="submitButton"><i class="material-icons left">delete</i></button>
+						</form>
+					</span></td>
+				</tr>
+		</tbody>
+	</table>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+
+</html>

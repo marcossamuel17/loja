@@ -1,0 +1,57 @@
+<html>
+
+<hmtl xmlns:th="http://thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+    </head>
+
+<body>
+
+	<header>
+		<nav>
+        <a class="logo" href="/">Tiger Codes</a>
+        <div class="mobile-menu">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <ul class="nav-list">
+          <li><a href="/">In�cio</a></li>
+          <li><a href="/usuario">Cadastrar</a></li>
+          
+        </ul>
+      </nav>
+	</header>
+	
+	<main>
+		<div class="container formUser">
+			<form class="container" th:action="@{/login}" method="post">
+				<div class="row">
+					<div class="input-field col s12">
+						Usuario: <input type="text" value="" name="username"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						Senha: <input type="text" value="" name="password"/>
+					</div>
+				</div>
+				<button class="waves-effect waves-light btn" type="submit">Login</button>
+			
+			</form>
+		</div>
+  
+  </main>
+  
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>
